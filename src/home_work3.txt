@@ -1,0 +1,30 @@
+CREATE TABLE products(
+    id SERIAL PRIMARY KEY,
+    product_name VARCHAR(30) NOT NULL,
+    manufacturer VARCHAR(20) NOT NULL,
+    product_count INTEGER DEFAULT 0,
+    price NUMERIC NOT NULL,
+    isDiscounted bool
+);
+INSERT INTO products(product_name, manufacturer, product_count, price, isDiscounted)
+VALUES ('IPhone 12', 'Apple', 3, 80000,false),
+       ('Iphone X','Apple',2,51000,true),
+       ('Iphone 11 Pro','Apple',1,77000,true),
+       ('Galaxy S9','Samsung',5,56000,false),
+       ('Desire 12','NTS',3,26000,false),
+       ('Galaxy A51','Samsung',4,37800,true);
+
+SELECT * FROM products where manufacturer  NOT LIKE 'NTS';
+SELECT * FROM products where manufacturer = 'Apple' AND price < 75000;
+SELECT * FROM products where price >= 46000;
+SELECT * FROM products ORDER BY price DESC LIMIT 2;
+SELECT MIN(price) as min_Price FROM products;
+SELECT * FROM products ORDER BY price DESC;
+SELECT * FROM products where product_count <= 2;
+SELECT * FROM products where isDiscounted = true;
+SELECT * FROM products where isDiscounted != true;
+SELECT SUM(price) as sum_Price FROM products;
+
+
+
+
